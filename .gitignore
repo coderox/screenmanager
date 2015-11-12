@@ -38,6 +38,7 @@ TestResult.xml
 [Rr]eleasePS/
 dlldata.c
 
+Generated Files/
 *.g.h
 *.g.cpp
 *_i.c
