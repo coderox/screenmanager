@@ -19,6 +19,11 @@ namespace Coderox {
 		void RemoveScreen(Coderox::GameScreen^ screen);
 
 		std::vector<Coderox::GameScreen^> GetScreens() { return m_screens; }
+		property std::shared_ptr<DirectX::SpriteBatch> SpriteBatch {
+			std::shared_ptr<DirectX::SpriteBatch> get() {
+				return m_spriteBatch;
+			}
+		}
 
 	private:
 		bool m_isInitialized;

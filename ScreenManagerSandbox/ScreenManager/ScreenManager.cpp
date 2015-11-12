@@ -4,25 +4,34 @@ using namespace DirectX;
 using namespace Coderox;
 
 ScreenManager::ScreenManager(const std::shared_ptr<DX::DeviceResources>& deviceResources)
-	: m_deviceResources(deviceResources)
-{
+	: m_deviceResources(deviceResources) {
 
 }
 
 void ScreenManager::Initialize() {
 	auto context = m_deviceResources->GetD3DDeviceContext();
-	m_spriteBatch.reset(new SpriteBatch(context));
+	m_spriteBatch.reset(new DirectX::SpriteBatch(context));
 
 	m_isInitialized = true;
 }
 
 void ScreenManager::Update(DX::StepTimer const& timer) {
 	assert(m_screens.size() > 0);
+	if (!m_isInitialized) {
+		return;
+	}
 }
 
 bool ScreenManager::Draw(DX::StepTimer const& timer) {
 	assert(m_screens.size() > 0);
 
+	if (m_isInitialized) {
+
+		for (auto screen : m_screens)
+		{
+			screen->Draw(timer);
+		}
+	}
 	return true;
 }
 

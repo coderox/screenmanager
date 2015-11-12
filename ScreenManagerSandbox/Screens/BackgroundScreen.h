@@ -7,7 +7,7 @@ namespace ScreenManagerSandbox {
 	internal:
 		BackgroundScreen(Coderox::ScreenManager^ manager);
 
-		void LoadContent();
-		void Draw(DX::StepTimer timer);
+		void LoadContent() override;
+		void Draw(DX::StepTimer timer) override;
 	};
 }

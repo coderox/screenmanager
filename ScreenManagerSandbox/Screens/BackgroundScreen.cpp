@@ -9,3 +9,15 @@ BackgroundScreen::BackgroundScreen(ScreenManager^ manager)
 {
 
 }
+
+void BackgroundScreen::LoadContent() {
+
+}
+
+void BackgroundScreen::Draw(DX::StepTimer timer) {
+	auto spriteBatch = m_screenManager->SpriteBatch;
+
+	spriteBatch->Begin();
+
+	spriteBatch->End();
+}
