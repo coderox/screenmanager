@@ -2,14 +2,14 @@
 #include "GameScreen.h"
 #include "Common\DeviceResources.h"
 #include "Common\StepTimer.h"
+#include "SpriteBatch.h"
 #include <vector>
 
 namespace Coderox {
 
-	class ScreenManager {
-	public:
+	ref class ScreenManager {
+	internal:
 		ScreenManager(const std::shared_ptr<DX::DeviceResources>& deviceResources);
-		~ScreenManager();
 		void Initialize();
 		void Update(DX::StepTimer const& timer);
 		bool Draw(DX::StepTimer const& timer);
@@ -28,5 +28,6 @@ namespace Coderox {
 		std::vector<Coderox::GameScreen^> m_screensToUpdate;
 
 		std::shared_ptr<DX::DeviceResources> m_deviceResources;
+		std::shared_ptr<DirectX::SpriteBatch> m_spriteBatch;
 	};
 }

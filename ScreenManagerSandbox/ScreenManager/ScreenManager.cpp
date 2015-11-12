@@ -1,5 +1,6 @@
 #include "pch.h"
 
+using namespace DirectX;
 using namespace Coderox;
 
 ScreenManager::ScreenManager(const std::shared_ptr<DX::DeviceResources>& deviceResources)
@@ -8,12 +9,10 @@ ScreenManager::ScreenManager(const std::shared_ptr<DX::DeviceResources>& deviceR
 
 }
 
-ScreenManager::~ScreenManager() {
-	m_screensToUpdate.clear();
-	m_screens.clear();
-}
-
 void ScreenManager::Initialize() {
+	auto context = m_deviceResources->GetD3DDeviceContext();
+	m_spriteBatch.reset(new SpriteBatch(context));
+
 	m_isInitialized = true;
 }
 

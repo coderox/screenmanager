@@ -2,18 +2,15 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Common">
-      <UniqueIdentifier>ed4aad7e-7dba-4138-9e60-887e4b5709d2</UniqueIdentifier>
+      <UniqueIdentifier>eba1579a-dc13-4b1a-8ea3-3e1d52fb6996</UniqueIdentifier>
     </Filter>
     <Filter Include="Assets">
-      <UniqueIdentifier>2230b9c0-2b9a-4595-b2c1-3c0a8e138e82</UniqueIdentifier>
+      <UniqueIdentifier>6721b226-8141-486b-a17c-16aec2f19e7f</UniqueIdentifier>
       <Extensions>bmp;fbx;gif;jpg;jpeg;tga;tiff;tif;png</Extensions>
     </Filter>
     <Filter Include="Content">
-      <UniqueIdentifier>218ec07b-f6c0-445c-a234-1061a98d8c12</UniqueIdentifier>
+      <UniqueIdentifier>1ca56e56-5fd1-4f85-9383-d6e026e78bc8</UniqueIdentifier>
     </Filter>
-    <ClInclude Include="Common\d3dx12.h">
-      <Filter>Common</Filter>
-    </ClInclude>
     <ClInclude Include="Common\DirectXHelper.h">
       <Filter>Common</Filter>
     </ClInclude>
@@ -29,10 +26,16 @@
     <ClInclude Include="Content\Sample3DSceneRenderer.h">
       <Filter>Content</Filter>
     </ClInclude>
+    <ClInclude Include="Content\SampleFpsTextRenderer.h">
+      <Filter>Content</Filter>
+    </ClInclude>
     <ClInclude Include="Content\ShaderStructures.h">
       <Filter>Content</Filter>
     </ClInclude>
     <ClCompile Include="Content\Sample3DSceneRenderer.cpp">
+      <Filter>Content</Filter>
+    </ClCompile>
+    <ClCompile Include="Content\SampleFpsTextRenderer.cpp">
       <Filter>Content</Filter>
     </ClCompile>
     <FxCompile Include="Content\SamplePixelShader.hlsl">
@@ -56,52 +59,62 @@
     <Image Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <Filter>Assets</Filter>
     </Image>
-    <Image Include="Assets\StoreLogo.png">
-      <Filter>Assets</Filter>
-    </Image>
     <Image Include="Assets\Wide310x150Logo.scale-200.png">
       <Filter>Assets</Filter>
     </Image>
     <Filter Include="ScreenManager">
-      <UniqueIdentifier>{aa2c4b64-8676-490c-8e25-f77a8685c99b}</UniqueIdentifier>
+      <UniqueIdentifier>{6f7ed8c1-1b2f-4aa7-85e7-dff2d95e52ac}</UniqueIdentifier>
     </Filter>
     <Filter Include="Screens">
-      <UniqueIdentifier>{88049c21-bfcf-4f03-ae7f-b5d6e20058a2}</UniqueIdentifier>
+      <UniqueIdentifier>{2f69c30a-64dd-434e-b615-71b63d0571de}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="App.cpp" />
-    <ClCompile Include="App1Main.cpp" />
+    <ApplicationDefinition Include="App.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="App.xaml.cpp" />
+    <ClCompile Include="ScreenManagerSandboxMain.cpp" />
+    <ClCompile Include="DirectXPage.xaml.cpp" />
     <ClCompile Include="pch.cpp" />
-    <ClCompile Include="ScreenManager.cpp">
+    <ClCompile Include="ScreenManager\GameScreen.cpp">
       <Filter>ScreenManager</Filter>
     </ClCompile>
-    <ClCompile Include="BackgroundScreen.cpp">
+    <ClCompile Include="ScreenManager\ScreenManager.cpp">
+      <Filter>ScreenManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Screens\BackgroundScreen.cpp">
       <Filter>Screens</Filter>
-    </ClCompile>
-    <ClCompile Include="GameScreen.cpp">
-      <Filter>ScreenManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="App.h" />
-    <ClInclude Include="App1Main.h" />
+    <ClInclude Include="App.xaml.h" />
+    <ClInclude Include="ScreenManagerSandboxMain.h" />
+    <ClInclude Include="DirectXPage.xaml.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="ScreenManager.h">
+    <ClInclude Include="ScreenManager\GameScreen.h">
       <Filter>ScreenManager</Filter>
     </ClInclude>
-    <ClInclude Include="GameScreen.h">
+    <ClInclude Include="ScreenManager\ScreenManager.h">
       <Filter>ScreenManager</Filter>
     </ClInclude>
-    <ClInclude Include="BackgroundScreen.h">
+    <ClInclude Include="Screens\BackgroundScreen.h">
       <Filter>Screens</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\StoreLogo.png">
+      <Filter>Assets</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App1_TemporaryKey.pfx" />
+    <None Include="ScreenManagerSandbox_TemporaryKey.pfx" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="DirectXPage.xaml" />
   </ItemGroup>
 </Project>
