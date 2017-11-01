@@ -3,7 +3,7 @@
 
 using namespace Coderox;
 
-GameScreen::GameScreen(ScreenManager^ manager)
+GameScreen::GameScreen(std::shared_ptr<ScreenManager> manager)
 	: m_screenManager(manager)
 {
 

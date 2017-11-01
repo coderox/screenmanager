@@ -4,13 +4,14 @@ using namespace DirectX;
 using namespace Coderox;
 
 ScreenManager::ScreenManager(const std::shared_ptr<DX::DeviceResources>& deviceResources)
-	: m_deviceResources(deviceResources) {
+	: m_deviceResources(deviceResources)
+	, m_isInitialized(false) {
 
 }
 
 void ScreenManager::Initialize() {
 	auto context = m_deviceResources->GetD3DDeviceContext();
-	m_spriteBatch.reset(new DirectX::SpriteBatch(context));
+	m_spriteBatch = std::make_shared<DirectX::SpriteBatch>(context);
 
 	m_isInitialized = true;
 }
@@ -39,7 +40,7 @@ void ScreenManager::TraceScreens() {
 
 }
 
-void ScreenManager::AddScreen(GameScreen^ screen) {
+void ScreenManager::AddScreen(std::shared_ptr<GameScreen> screen) {
 	if (m_isInitialized) {
 		//screen->LoadContent();
 	}
@@ -47,7 +48,7 @@ void ScreenManager::AddScreen(GameScreen^ screen) {
 	m_screens.push_back(screen);
 }
 
-void ScreenManager::RemoveScreen(GameScreen^ screen) {
+void ScreenManager::RemoveScreen(std::shared_ptr<GameScreen> screen) {
 	if (m_isInitialized) {
 		//screen->UnloadContent();
 	}

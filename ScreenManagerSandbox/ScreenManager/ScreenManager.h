@@ -7,30 +7,27 @@
 
 namespace Coderox {
 
-	ref class ScreenManager {
-	internal:
+	class ScreenManager {
+	public:
 		ScreenManager(const std::shared_ptr<DX::DeviceResources>& deviceResources);
 		void Initialize();
 		void Update(DX::StepTimer const& timer);
 		bool Draw(DX::StepTimer const& timer);
 
 		void TraceScreens();
-		void AddScreen(Coderox::GameScreen^ screen);
-		void RemoveScreen(Coderox::GameScreen^ screen);
+		void AddScreen(std::shared_ptr<Coderox::GameScreen> screen);
+		void RemoveScreen(std::shared_ptr<Coderox::GameScreen> screen);
 
-		std::vector<Coderox::GameScreen^> GetScreens() { return m_screens; }
-		property std::shared_ptr<DirectX::SpriteBatch> SpriteBatch {
-			std::shared_ptr<DirectX::SpriteBatch> get() {
-				return m_spriteBatch;
-			}
-		}
+		std::vector<std::shared_ptr<Coderox::GameScreen>> GetScreens() { return m_screens; }
+
+		std::shared_ptr<DirectX::SpriteBatch> GetSpriteBatch() { return m_spriteBatch; }
 
 	private:
 		bool m_isInitialized;
 		bool m_traceEnabled;
 
-		std::vector<Coderox::GameScreen^> m_screens;
-		std::vector<Coderox::GameScreen^> m_screensToUpdate;
+		std::vector<std::shared_ptr<Coderox::GameScreen>> m_screens;
+		std::vector<std::shared_ptr<Coderox::GameScreen>> m_screensToUpdate;
 
 		std::shared_ptr<DX::DeviceResources> m_deviceResources;
 		std::shared_ptr<DirectX::SpriteBatch> m_spriteBatch;

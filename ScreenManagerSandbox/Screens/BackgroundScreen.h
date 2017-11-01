@@ -3,9 +3,9 @@
 #include "ScreenManager\ScreenManager.h"
 
 namespace ScreenManagerSandbox {
-	ref class BackgroundScreen : Coderox::GameScreen {
-	internal:
-		BackgroundScreen(Coderox::ScreenManager^ manager);
+	class BackgroundScreen : public Coderox::GameScreen {
+	public:
+		BackgroundScreen(std::shared_ptr<Coderox::ScreenManager> manager);
 
 		void LoadContent() override;
 		void Draw(DX::StepTimer timer) override;

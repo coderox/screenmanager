@@ -4,7 +4,7 @@
 using namespace ScreenManagerSandbox;
 using namespace Coderox;
 
-BackgroundScreen::BackgroundScreen(ScreenManager^ manager) 
+BackgroundScreen::BackgroundScreen(std::shared_ptr<ScreenManager> manager)
 	: GameScreen(manager)
 {
 
@@ -15,8 +15,7 @@ void BackgroundScreen::LoadContent() {
 }
 
 void BackgroundScreen::Draw(DX::StepTimer timer) {
-	auto spriteBatch = m_screenManager->SpriteBatch;
-
+	std::shared_ptr<DirectX::SpriteBatch> spriteBatch = m_screenManager->GetSpriteBatch();
 	spriteBatch->Begin();
 
 	spriteBatch->End();

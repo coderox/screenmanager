@@ -59,6 +59,6 @@ namespace ScreenManagerSandbox
 		// Track current input pointer position.
 		float m_pointerLocationX;
 
-		Coderox::ScreenManager^ m_screenManager;
+		std::shared_ptr<Coderox::ScreenManager> m_screenManager;
 	};
 }

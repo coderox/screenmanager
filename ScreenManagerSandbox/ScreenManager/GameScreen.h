@@ -1,19 +1,18 @@
 #pragma once
 
-
 namespace Coderox {
 
-	ref class ScreenManager;
+	class ScreenManager;
 
-	ref class GameScreen {
-	internal:
-		GameScreen(ScreenManager^ manager);
+	class GameScreen {
+	public:
+		GameScreen(std::shared_ptr<ScreenManager> manager);
 		virtual void LoadContent() = 0;
 		virtual void Draw(DX::StepTimer timer) = 0;
 
 
 
-		ScreenManager^ m_screenManager;
+		std::shared_ptr<ScreenManager> m_screenManager;
 	};
 
 }
