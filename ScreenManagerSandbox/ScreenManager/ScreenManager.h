@@ -4,6 +4,7 @@
 #include "Common\StepTimer.h"
 #include "SpriteBatch.h"
 #include <vector>
+#include "CommonStates.h"
 
 namespace Coderox {
 
@@ -31,5 +32,6 @@ namespace Coderox {
 
 		std::shared_ptr<DX::DeviceResources> m_deviceResources;
 		std::shared_ptr<DirectX::SpriteBatch> m_spriteBatch;
+		std::unique_ptr<DirectX::CommonStates> m_states;
 	};
 }

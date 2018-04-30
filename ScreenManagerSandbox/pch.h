@@ -22,3 +22,4 @@
 #include "Common/DirectXHelper.h"
 #include "Common/StepTimer.h"
 #include "Common/DeviceResources.h"
+#include "CommonStates.h"
