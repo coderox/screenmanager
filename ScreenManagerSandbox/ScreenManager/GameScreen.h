@@ -1,19 +1,20 @@
 #pragma once
-
+#include "../Common/StepTimer.h"
 
 namespace Coderox {
 
-	ref class ScreenManager;
+	class ScreenManager;
 
-	ref class GameScreen {
-	internal:
-		GameScreen(ScreenManager^ manager);
+	class GameScreen {
+	public:
+		GameScreen(std::shared_ptr<ScreenManager> manager) 
+			: m_screenManager(manager) {}
 		virtual void LoadContent() = 0;
+		virtual void UnloadContent() = 0;
 		virtual void Draw(DX::StepTimer timer) = 0;
 
-
-
-		ScreenManager^ m_screenManager;
+	protected:	
+		std::shared_ptr<ScreenManager> m_screenManager;
 	};
 
 }

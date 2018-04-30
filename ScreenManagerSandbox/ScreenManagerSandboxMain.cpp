@@ -18,8 +18,8 @@ ScreenManagerSandboxMain::ScreenManagerSandboxMain(const std::shared_ptr<DX::Dev
 	// TODO: Replace this with your app's content initialization.
 	//m_sceneRenderer = std::unique_ptr<Sample3DSceneRenderer>(new Sample3DSceneRenderer(m_deviceResources));
 
-	m_screenManager = ref new Coderox::ScreenManager(deviceResources);
-	m_screenManager->AddScreen(ref new BackgroundScreen(m_screenManager));
+	m_screenManager = std::make_shared<Coderox::ScreenManager>(deviceResources);
+	m_screenManager->AddScreen(std::make_shared<BackgroundScreen>(m_screenManager));
 
 	m_fpsTextRenderer = std::unique_ptr<SampleFpsTextRenderer>(new SampleFpsTextRenderer(m_deviceResources));
 
@@ -126,7 +126,6 @@ bool ScreenManagerSandboxMain::Render()
 	// Render the scene objects.
 	// TODO: Replace this with your app's content rendering functions.
 	//m_sceneRenderer->Render();
-
 	m_screenManager->Draw(m_timer);
 	m_fpsTextRenderer->Render();
 

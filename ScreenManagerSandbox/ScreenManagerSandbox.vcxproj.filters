@@ -77,9 +77,6 @@
     <ClCompile Include="ScreenManagerSandboxMain.cpp" />
     <ClCompile Include="DirectXPage.xaml.cpp" />
     <ClCompile Include="pch.cpp" />
-    <ClCompile Include="ScreenManager\GameScreen.cpp">
-      <Filter>ScreenManager</Filter>
-    </ClCompile>
     <ClCompile Include="ScreenManager\ScreenManager.cpp">
       <Filter>ScreenManager</Filter>
     </ClCompile>
@@ -104,6 +101,9 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\StoreLogo.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="..\..\flappy-bird-reborn\assets\bird.png">
       <Filter>Assets</Filter>
     </Image>
   </ItemGroup>

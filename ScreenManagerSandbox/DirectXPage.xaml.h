@@ -25,9 +25,6 @@ namespace ScreenManagerSandbox
 		void LoadInternalState(Windows::Foundation::Collections::IPropertySet^ state);
 
 	private:
-		// XAML low-level rendering event handler.
-		void OnRendering(Platform::Object^ sender, Platform::Object^ args);
-
 		// Window event handlers.
 		void OnVisibilityChanged(Windows::UI::Core::CoreWindow^ sender, Windows::UI::Core::VisibilityChangedEventArgs^ args);
 
@@ -56,4 +53,3 @@ namespace ScreenManagerSandbox
 		bool m_windowVisible;
 	};
 }
-
