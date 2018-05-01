@@ -13,7 +13,7 @@ void BackgroundScreen::LoadContent() {
 	DX::ThrowIfFailed(
 		CreateWICTextureFromFile(
 			m_screenManager->GetDeviceResources()->GetD3DDevice(), 
-			L"bird.png", resource.GetAddressOf(),
+			L"Assets/StoreLogo.png", resource.GetAddressOf(),
 			m_texture.ReleaseAndGetAddressOf()));
 
 	ComPtr<ID3D11Texture2D> cat;
