@@ -77,9 +77,6 @@
     <ClCompile Include="ScreenManagerSandboxMain.cpp" />
     <ClCompile Include="DirectXPage.xaml.cpp" />
     <ClCompile Include="pch.cpp" />
-    <ClCompile Include="ScreenManager\GameScreen.cpp">
-      <Filter>ScreenManager</Filter>
-    </ClCompile>
     <ClCompile Include="ScreenManager\ScreenManager.cpp">
       <Filter>ScreenManager</Filter>
     </ClCompile>

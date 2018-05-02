@@ -126,7 +126,6 @@ bool ScreenManagerSandboxMain::Render()
 	// Render the scene objects.
 	// TODO: Replace this with your app's content rendering functions.
 	//m_sceneRenderer->Render();
-
 	m_screenManager->Draw(m_timer);
 	m_fpsTextRenderer->Render();
 
