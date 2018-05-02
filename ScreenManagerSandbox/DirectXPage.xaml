@@ -14,7 +14,7 @@
                FontSize="30" />
   </SwapChainPanel>
 
-  <Page.BottomAppBar>
+  <!--<Page.BottomAppBar>
     <AppBar x:Name="bottomAppBar" Padding="10,0,10,0">
       <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
         <AppBarButton AutomationProperties.Name="Sample Button"
@@ -22,5 +22,5 @@
                       Click="AppBarButton_Click"/>
       </StackPanel>
     </AppBar>
-  </Page.BottomAppBar>
+  </Page.BottomAppBar>-->
 </Page>

@@ -1,14 +1,17 @@
 #pragma once
 #include "ScreenManager\GameScreen.h"
 #include "ScreenManager\ScreenManager.h"
+#include "TextureManager\TextureManager.h"
 #include "SimpleMath.h"
 
 namespace ScreenManagerSandbox {
 
 	class SplashScreen : public Coderox::GameScreen {
 	public:
-		SplashScreen(std::shared_ptr<Coderox::ScreenManager> manager)
-			: GameScreen(manager) { }
+		SplashScreen(std::shared_ptr<Coderox::ScreenManager> manager, std::shared_ptr<Coderox::TextureManager> textureManager)
+			: GameScreen(manager)
+			, mTextureManager(textureManager) 
+		{ }
 
 		void LoadContent() override;
 		void UnloadContent() override;
@@ -18,6 +21,7 @@ namespace ScreenManagerSandbox {
 	private:
 		DirectX::SimpleMath::Vector2 m_logoPosition;
 		DirectX::SimpleMath::Vector2 m_origin;
-		Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_texture;
+		UINT mBgTextureId;
+		std::shared_ptr<Coderox::TextureManager> mTextureManager;
 	};
 }

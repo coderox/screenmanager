@@ -22,7 +22,9 @@ ScreenManagerSandboxMain::ScreenManagerSandboxMain(const std::shared_ptr<DX::Dev
 	m_screenManager = std::make_shared<Coderox::ScreenManager>(deviceResources);
 	m_screenManager->Initialize();
 	
-	m_fpsTextRenderer = std::make_unique<SampleFpsTextRenderer>(m_deviceResources);
+	m_fpsTextRenderer = std::make_unique<SampleFpsTextRenderer>(deviceResources);
+
+	mTextureManager = std::make_shared<Coderox::TextureManager>(deviceResources);
 
 	// TODO: Change the timer settings if you want something other than the default variable timestep mode.
 	// e.g. for 60 FPS fixed timestep update logic, call:
@@ -56,7 +58,7 @@ void ScreenManagerSandboxMain::StartRenderLoop()
 	// Create a task that will be run on a background thread.
 	auto workItemHandler = ref new WorkItemHandler([this](IAsyncAction ^ action)
 	{
-		m_screenManager->AddScreen(std::make_shared<SplashScreen>(m_screenManager));
+		m_screenManager->AddScreen(std::make_shared<SplashScreen>(m_screenManager, mTextureManager));
 
 		// Calculate the updated frame and render once per vertical blanking interval.
 		while (action->Status == AsyncStatus::Started)

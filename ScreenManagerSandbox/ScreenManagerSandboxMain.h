@@ -5,6 +5,7 @@
 #include "Content\Sample3DSceneRenderer.h"
 #include "Content\SampleFpsTextRenderer.h"
 #include "ScreenManager\ScreenManager.h"
+#include "TextureManager\TextureManager.h"
 
 // Renders Direct2D and 3D content on the screen.
 namespace ScreenManagerSandbox
@@ -60,5 +61,6 @@ namespace ScreenManagerSandbox
 		float m_pointerLocationX;
 
 		std::shared_ptr<Coderox::ScreenManager> m_screenManager;
+		std::shared_ptr<Coderox::TextureManager> mTextureManager;
 	};
 }

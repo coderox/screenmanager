@@ -235,6 +235,7 @@
     <ClInclude Include="ScreenManager\ScreenManager.h" />
     <ClInclude Include="Screens\BackgroundScreen.h" />
     <ClInclude Include="Screens\SplashScreen.h" />
+    <ClInclude Include="TextureManager\TextureManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="App.xaml.cpp">
@@ -258,6 +259,7 @@
     <ClCompile Include="ScreenManager\ScreenManager.cpp" />
     <ClCompile Include="Screens\BackgroundScreen.cpp" />
     <ClCompile Include="Screens\SplashScreen.cpp" />
+    <ClCompile Include="TextureManager\TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
