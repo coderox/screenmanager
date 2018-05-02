@@ -234,6 +234,7 @@
     <ClInclude Include="ScreenManager\GameScreen.h" />
     <ClInclude Include="ScreenManager\ScreenManager.h" />
     <ClInclude Include="Screens\BackgroundScreen.h" />
+    <ClInclude Include="Screens\SplashScreen.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="App.xaml.cpp">
@@ -256,6 +257,7 @@
     </ClCompile>
     <ClCompile Include="ScreenManager\ScreenManager.cpp" />
     <ClCompile Include="Screens\BackgroundScreen.cpp" />
+    <ClCompile Include="Screens\SplashScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

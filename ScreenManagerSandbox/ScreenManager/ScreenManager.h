@@ -13,7 +13,7 @@ namespace Coderox {
 		ScreenManager(const std::shared_ptr<DX::DeviceResources>& deviceResources);
 		void Initialize();
 		void Update(DX::StepTimer const& timer);
-		bool Draw(DX::StepTimer const& timer);
+		void Draw(DX::StepTimer const& timer);
 
 		void TraceScreens();
 		void AddScreen(std::shared_ptr<Coderox::GameScreen> screen);

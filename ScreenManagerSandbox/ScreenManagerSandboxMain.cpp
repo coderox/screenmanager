@@ -2,6 +2,7 @@
 #include "ScreenManagerSandboxMain.h"
 #include "Common\DirectXHelper.h"
 #include "Screens\BackgroundScreen.h"
+#include "Screens\SplashScreen.h"
 
 using namespace ScreenManagerSandbox;
 using namespace Windows::Foundation;
@@ -19,8 +20,9 @@ ScreenManagerSandboxMain::ScreenManagerSandboxMain(const std::shared_ptr<DX::Dev
 	//m_sceneRenderer = std::unique_ptr<Sample3DSceneRenderer>(new Sample3DSceneRenderer(m_deviceResources));
 
 	m_screenManager = std::make_shared<Coderox::ScreenManager>(deviceResources);
-
-	m_fpsTextRenderer = std::unique_ptr<SampleFpsTextRenderer>(new SampleFpsTextRenderer(m_deviceResources));
+	m_screenManager->Initialize();
+	
+	m_fpsTextRenderer = std::make_unique<SampleFpsTextRenderer>(m_deviceResources);
 
 	// TODO: Change the timer settings if you want something other than the default variable timestep mode.
 	// e.g. for 60 FPS fixed timestep update logic, call:
@@ -41,9 +43,6 @@ void ScreenManagerSandboxMain::CreateWindowSizeDependentResources()
 {
 	// TODO: Replace this with the size-dependent initialization of your app's content.
 	//m_sceneRenderer->CreateWindowSizeDependentResources();
-
-	m_screenManager->Initialize();
-	m_screenManager->AddScreen(std::make_shared<BackgroundScreen>(m_screenManager));
 }
 
 void ScreenManagerSandboxMain::StartRenderLoop()
@@ -57,6 +56,8 @@ void ScreenManagerSandboxMain::StartRenderLoop()
 	// Create a task that will be run on a background thread.
 	auto workItemHandler = ref new WorkItemHandler([this](IAsyncAction ^ action)
 	{
+		m_screenManager->AddScreen(std::make_shared<SplashScreen>(m_screenManager));
+
 		// Calculate the updated frame and render once per vertical blanking interval.
 		while (action->Status == AsyncStatus::Started)
 		{
@@ -87,7 +88,7 @@ void ScreenManagerSandboxMain::Update()
 	m_timer.Tick([&]()
 	{
 		// TODO: Replace this with your app's content update functions.
-		//m_sceneRenderer->Update(m_timer);
+		m_screenManager->Update(m_timer);
 		m_fpsTextRenderer->Update(m_timer);
 	});
 }

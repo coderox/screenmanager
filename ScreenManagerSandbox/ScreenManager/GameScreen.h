@@ -11,6 +11,7 @@ namespace Coderox {
 			: m_screenManager(manager) {}
 		virtual void LoadContent() = 0;
 		virtual void UnloadContent() = 0;
+		virtual void Update(DX::StepTimer timer) = 0;
 		virtual void Draw(DX::StepTimer timer) = 0;
 
 	protected:	

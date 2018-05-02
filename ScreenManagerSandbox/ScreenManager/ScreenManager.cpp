@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "ScreenManager.h"
 
 using namespace std;
 using namespace DirectX;
@@ -11,11 +12,15 @@ ScreenManager::ScreenManager(const std::shared_ptr<DX::DeviceResources>& deviceR
 }
 
 void ScreenManager::Initialize() {
+	if (m_isInitialized) {
+		return;
+	}
+
 	auto d3dDevice = m_deviceResources->GetD3DDevice();
 	auto d3dContext = m_deviceResources->GetD3DDeviceContext();
-	m_spriteBatch = std::make_shared<DirectX::SpriteBatch>(d3dContext);
 
-	m_states = std::make_unique<CommonStates>(d3dDevice);
+	m_spriteBatch = make_shared<SpriteBatch>(d3dContext);
+	m_states = make_unique<CommonStates>(d3dDevice);
 
 	m_isInitialized = true;
 }
@@ -25,9 +30,14 @@ void ScreenManager::Update(DX::StepTimer const& timer) {
 		return;
 	}
 	assert(m_screens.size() > 0);
+
+	for (auto screen : m_screens)
+	{
+		screen->Update(timer);
+	}
 }
 
-bool ScreenManager::Draw(DX::StepTimer const& timer) {
+void ScreenManager::Draw(DX::StepTimer const& timer) {
 	if (m_isInitialized) {
 		assert(m_screens.size() > 0);
 
@@ -38,7 +48,6 @@ bool ScreenManager::Draw(DX::StepTimer const& timer) {
 		}
 		m_spriteBatch->End();
 	}
-	return true;
 }
 
 void ScreenManager::TraceScreens() {

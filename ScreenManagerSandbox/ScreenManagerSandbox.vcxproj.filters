@@ -83,6 +83,9 @@
     <ClCompile Include="Screens\BackgroundScreen.cpp">
       <Filter>Screens</Filter>
     </ClCompile>
+    <ClCompile Include="Screens\SplashScreen.cpp">
+      <Filter>Screens</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.xaml.h" />
@@ -96,6 +99,9 @@
       <Filter>ScreenManager</Filter>
     </ClInclude>
     <ClInclude Include="Screens\BackgroundScreen.h">
+      <Filter>Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="Screens\SplashScreen.h">
       <Filter>Screens</Filter>
     </ClInclude>
   </ItemGroup>

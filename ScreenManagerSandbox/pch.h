@@ -17,8 +17,6 @@
 
 #include "SpriteBatch.h"
 #include "SpriteFont.h"
-#include "ScreenManager/GameScreen.h"
-#include "ScreenManager/ScreenManager.h"
 #include "Common/DirectXHelper.h"
 #include "Common/StepTimer.h"
 #include "Common/DeviceResources.h"
