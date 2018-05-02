@@ -42,7 +42,7 @@ void ScreenManager::TraceScreens() {
 
 void ScreenManager::AddScreen(std::shared_ptr<GameScreen> screen) {
 	if (m_isInitialized) {
-		//screen->LoadContent();
+		screen->LoadContent();
 	}
 
 	m_screens.push_back(screen);
@@ -50,17 +50,17 @@ void ScreenManager::AddScreen(std::shared_ptr<GameScreen> screen) {
 
 void ScreenManager::RemoveScreen(std::shared_ptr<GameScreen> screen) {
 	if (m_isInitialized) {
-		//screen->UnloadContent();
+		screen->UnloadContent();
 	}
 
-	for (int i = 0; i < m_screens.size(); i++)
+	for (size_t i = 0; i < m_screens.size(); i++)
 	{
 		if (m_screens.at(i) == screen) {
 			m_screens.erase(m_screens.begin() + i);
 		}
 	}
 
-	for (int i = 0; i < m_screensToUpdate.size(); i++)
+	for (size_t i = 0; i < m_screensToUpdate.size(); i++)
 	{
 		if (m_screensToUpdate.at(i) == screen) {
 			m_screensToUpdate.erase(m_screensToUpdate.begin() + i);

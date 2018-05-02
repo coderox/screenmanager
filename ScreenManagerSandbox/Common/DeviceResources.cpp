@@ -3,13 +3,14 @@
 #include "DirectXHelper.h"
 #include <windows.ui.xaml.media.dxinterop.h>
 
+using namespace winrt;
 using namespace D2D1;
 using namespace DirectX;
 using namespace Microsoft::WRL;
-using namespace Windows::Foundation;
-using namespace Windows::Graphics::Display;
-using namespace Windows::UI::Core;
-using namespace Windows::UI::Xaml::Controls;
+using namespace winrt::Windows::Foundation;
+using namespace winrt::Windows::Graphics::Display;
+using namespace winrt::Windows::UI::Core;
+using namespace winrt::Windows::UI::Xaml::Controls;
 using namespace Platform;
 
 // Constants used to calculate screen rotations.
@@ -49,7 +50,7 @@ namespace ScreenRotation
 };
 
 // Constructor for DeviceResources.
-DX::DeviceResources::DeviceResources() : 
+DX::DeviceResources::DeviceResources() :
 	m_screenViewport(),
 	m_d3dFeatureLevel(D3D_FEATURE_LEVEL_9_1),
 	m_d3dRenderTargetSize(),

@@ -1,7 +1,5 @@
 ﻿#pragma once
 
-#include <wrl.h>
-#include <wrl/client.h>
 #include <d3d11_2.h>
 #include <d2d1_2.h>
 #include <d2d1effects_1.h>
@@ -19,3 +17,9 @@
 #include "SpriteFont.h"
 #include "ScreenManager\GameScreen.h"
 #include "ScreenManager\ScreenManager.h"
+
+#include <winrt/Windows.ApplicationModel.h>
+#include <winrt/Windows.UI.h>
+#include <winrt/Windows.UI.Xaml.h>
+#include <winrt/Windows.UI.Xaml.Controls.h>
+#include <winrt/Windows.Graphics.Display.h>

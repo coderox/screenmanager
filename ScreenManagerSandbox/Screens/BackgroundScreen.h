@@ -8,6 +8,7 @@ namespace ScreenManagerSandbox {
 		BackgroundScreen(std::shared_ptr<Coderox::ScreenManager> manager);
 
 		void LoadContent() override;
+		void UnloadContent() override;
 		void Draw(DX::StepTimer timer) override;
 	};
 }

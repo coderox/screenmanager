@@ -1,6 +1,11 @@
 ﻿#pragma once
+#include <pch.h>
+#include <future>
 
-#include <ppltasks.h>	// For create_task
+using namespace winrt;
+using namespace winrt::Windows::Foundation;
+using namespace winrt::Windows::Storage;
+using namespace winrt::Windows::Storage::Streams;
 
 namespace DX
 {
@@ -9,29 +14,26 @@ namespace DX
 		if (FAILED(hr))
 		{
 			// Set a breakpoint on this line to catch Win32 API errors.
-			throw Platform::Exception::CreateException(hr);
+			throw winrt::hresult_error(hr);
 		}
 	}
 
 	// Function that reads from a binary file asynchronously.
-	inline Concurrency::task<std::vector<byte>> ReadDataAsync(const std::wstring& filename)
+	inline std::future<std::vector<byte>> ReadDataAsync(const std::wstring& filename)
 	{
-		using namespace Windows::Storage;
-		using namespace Concurrency;
-
-		auto folder = Windows::ApplicationModel::Package::Current->InstalledLocation;
-
-		return create_task(folder->GetFileAsync(Platform::StringReference(filename.c_str()))).then([] (StorageFile^ file) 
-		{
-			return FileIO::ReadBufferAsync(file);
-		}).then([] (Streams::IBuffer^ fileBuffer) -> std::vector<byte> 
-		{
+		try {
+			auto folder = winrt::Windows::ApplicationModel::Package::Current().InstalledLocation();
+			auto file = co_await folder.GetFileAsync(winrt::hstring_ref(filename.c_str()));
+			IBuffer fileBuffer = co_await FileIO::ReadBufferAsync(file);
 			std::vector<byte> returnBuffer;
-			returnBuffer.resize(fileBuffer->Length);
-			Streams::DataReader::FromBuffer(fileBuffer)->ReadBytes(Platform::ArrayReference<byte>(returnBuffer.data(), fileBuffer->Length));
+			returnBuffer.resize(fileBuffer.Length());
+			DataReader::FromBuffer(fileBuffer).ReadBytes(winrt::array_ref<byte>(returnBuffer));
 			return returnBuffer;
-		});
-	}
+		}
+		catch (...) {
+
+		}
+
 
 	// Converts a length in device-independent pixels (DIPs) to a length in physical pixels.
 	inline float ConvertDipsToPixels(float dips, float dpi)
