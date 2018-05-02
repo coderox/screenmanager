@@ -19,7 +19,6 @@ ScreenManagerSandboxMain::ScreenManagerSandboxMain(const std::shared_ptr<DX::Dev
 	//m_sceneRenderer = std::unique_ptr<Sample3DSceneRenderer>(new Sample3DSceneRenderer(m_deviceResources));
 
 	m_screenManager = std::make_shared<Coderox::ScreenManager>(deviceResources);
-	m_screenManager->AddScreen(std::make_shared<BackgroundScreen>(m_screenManager));
 
 	m_fpsTextRenderer = std::unique_ptr<SampleFpsTextRenderer>(new SampleFpsTextRenderer(m_deviceResources));
 
@@ -44,6 +43,7 @@ void ScreenManagerSandboxMain::CreateWindowSizeDependentResources()
 	//m_sceneRenderer->CreateWindowSizeDependentResources();
 
 	m_screenManager->Initialize();
+	m_screenManager->AddScreen(std::make_shared<BackgroundScreen>(m_screenManager));
 }
 
 void ScreenManagerSandboxMain::StartRenderLoop()

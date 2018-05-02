@@ -11,8 +11,9 @@ ScreenManager::ScreenManager(const std::shared_ptr<DX::DeviceResources>& deviceR
 }
 
 void ScreenManager::Initialize() {
-	auto context = m_deviceResources->GetD3DDeviceContext();
-	m_spriteBatch = std::make_shared<DirectX::SpriteBatch>(context);
+	auto d3dDevice = m_deviceResources->GetD3DDevice();
+	auto d3dContext = m_deviceResources->GetD3DDeviceContext();
+	m_spriteBatch = std::make_shared<DirectX::SpriteBatch>(d3dContext);
 
 	m_states = std::make_unique<CommonStates>(d3dDevice);
 
@@ -20,16 +21,15 @@ void ScreenManager::Initialize() {
 }
 
 void ScreenManager::Update(DX::StepTimer const& timer) {
-	assert(m_screens.size() > 0);
 	if (!m_isInitialized) {
 		return;
 	}
+	assert(m_screens.size() > 0);
 }
 
 bool ScreenManager::Draw(DX::StepTimer const& timer) {
-	assert(m_screens.size() > 0);
-
 	if (m_isInitialized) {
+		assert(m_screens.size() > 0);
 
 		m_spriteBatch->Begin(SpriteSortMode_Deferred, m_states->NonPremultiplied());
 		for (auto screen : m_screens)
