@@ -68,6 +68,9 @@
     <Filter Include="Screens">
       <UniqueIdentifier>{2f69c30a-64dd-434e-b615-71b63d0571de}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TextureManager">
+      <UniqueIdentifier>{2c58eb82-b468-4763-b0ed-705d18e749e3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml" />
@@ -86,7 +89,9 @@
     <ClCompile Include="Screens\SplashScreen.cpp">
       <Filter>Screens</Filter>
     </ClCompile>
-    <ClCompile Include="TextureManager\TextureManager.cpp" />
+    <ClCompile Include="TextureManager\TextureManager.cpp">
+      <Filter>TextureManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.xaml.h" />
@@ -105,7 +110,12 @@
     <ClInclude Include="Screens\SplashScreen.h">
       <Filter>Screens</Filter>
     </ClInclude>
-    <ClInclude Include="TextureManager\TextureManager.h" />
+    <ClInclude Include="TextureManager\TextureManager.h">
+      <Filter>TextureManager</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager\Texture.h">
+      <Filter>TextureManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\StoreLogo.png">

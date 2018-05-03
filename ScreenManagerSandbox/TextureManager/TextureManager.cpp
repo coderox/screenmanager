@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "TextureManager.h"
 #include "WICTextureLoader.h"
+#include "Texture.h"
 
 using namespace Coderox;
 using namespace DirectX;
@@ -22,24 +23,18 @@ UINT TextureManager::LoadTexture(const wchar_t* filename) {
 	CD3D11_TEXTURE2D_DESC textureDescription;
 	desc->GetDesc(&textureDescription);
 
-	mTextures.emplace(++mTextureId, texture);
-	mTextureDescriptions.emplace(mTextureId, textureDescription);
+	mTextures.emplace(++mTextureId, std::make_shared<Texture>(texture, textureDescription));
 
 	return mTextureId;
 }
 
-CD3D11_TEXTURE2D_DESC TextureManager::GetTextureDescription(UINT id) {
+std::shared_ptr<Texture> TextureManager::GetTexture(UINT id) {
 	assert(id <= mTextureId);
-	return mTextureDescriptions[id];
-}
-
-ID3D11ShaderResourceView* TextureManager::GetTexture(UINT id) {
-	assert(id <= mTextureId);
-	return mTextures[id].Get();
+	return mTextures[id];
 }
 
 void TextureManager::Unload() {
 	for (auto texture : mTextures) {
-		texture.second.ReleaseAndGetAddressOf();
+		texture.second.reset();
 	}
 }

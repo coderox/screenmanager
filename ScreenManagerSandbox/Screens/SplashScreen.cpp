@@ -2,6 +2,7 @@
 #include "SplashScreen.h"
 
 #include "WICTextureLoader.h"
+#include "TextureManager\Texture.h"
 
 using namespace ScreenManagerSandbox;
 using namespace Coderox;
@@ -10,27 +11,14 @@ using namespace Microsoft::WRL;
 
 void SplashScreen::LoadContent() {
 	mBgTextureId = mTextureManager->LoadTexture(L"Assets/SplashScreen.scale-200.png");
-	//ComPtr<ID3D11Resource> resource;
+	auto texture = mTextureManager->GetTexture(mBgTextureId);
 
-	//DX::ThrowIfFailed(
-	//	CreateWICTextureFromFile(
-	//		m_screenManager->GetDeviceResources()->GetD3DDevice(),
-	//		L"Assets/SplashScreen.scale-200.png", resource.GetAddressOf(),
-	//		m_texture.ReleaseAndGetAddressOf()));
-
-	//ComPtr<ID3D11Texture2D> cat;
-	//DX::ThrowIfFailed(resource.As(&cat));
-
-	//CD3D11_TEXTURE2D_DESC catDesc;
-	//cat->GetDesc(&catDesc);
-	auto catDesc = mTextureManager->GetTextureDescription(mBgTextureId);
-
-	m_origin.x = float(catDesc.Width / 2);
-	m_origin.y = float(catDesc.Height / 2);
+	m_origin.x = float(texture->GetDescription().Width / 2);
+	m_origin.y = float(texture->GetDescription().Height / 2);
 }
 
 void SplashScreen::UnloadContent() {
-	//m_texture.Reset();
+	
 }
 
 void SplashScreen::Update(DX::StepTimer timer) {
@@ -43,5 +31,5 @@ void SplashScreen::Update(DX::StepTimer timer) {
 void SplashScreen::Draw(DX::StepTimer timer) {
 	auto spriteBatch = m_screenManager->GetSpriteBatch();
 	auto texture = mTextureManager->GetTexture(mBgTextureId);
-	spriteBatch->Draw(texture, m_logoPosition, nullptr, Colors::White, 0.f, m_origin);
+	spriteBatch->Draw(texture->Get(), m_logoPosition, nullptr, Colors::White, 0.f, m_origin);
 }

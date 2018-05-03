@@ -235,6 +235,7 @@
     <ClInclude Include="ScreenManager\ScreenManager.h" />
     <ClInclude Include="Screens\BackgroundScreen.h" />
     <ClInclude Include="Screens\SplashScreen.h" />
+    <ClInclude Include="TextureManager\Texture.h" />
     <ClInclude Include="TextureManager\TextureManager.h" />
   </ItemGroup>
   <ItemGroup>
